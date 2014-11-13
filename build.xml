@@ -20,7 +20,7 @@
 <target name="makejar" depends="compile,init">
   <jar destfile="${JarName}" basedir="${outputDir}">
     <manifest>
-      <attribute name="Main-Class" value="me.vsix.JMXGet"/>
+      <attribute name="Main-Class" value="me.vsix.JMXProgram"/>
     </manifest>
   </jar>
 </target>
