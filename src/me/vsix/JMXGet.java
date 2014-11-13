@@ -8,14 +8,35 @@ import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
 import javax.management.openmbean.CompositeDataSupport;
+import java.util.Properties;
+import java.io.FileInputStream;
 
 public class JMXGet {
 
     /* For simplicity, we declare "throws Exception".
        Real programs will usually want finer-grained exception handling. */
     public static void main(String[] args) throws Exception {
+
+        Properties p = new Properties(System.getProperties());
+        if (args.length > 0)
+        {
+            FileInputStream propertyfile = new FileInputStream(args[0]);
+            p.load(propertyfile);
+        }
+        else
+        {
+            p.setProperty("host","localhost");
+            p.setProperty("port", "9999");
+        }
+        System.setProperties(p);
+
+        String host=p.getProperty("host");
+        String port=p.getProperty("port");
+
+        String serviceurl=String.format("service:jmx:rmi:///jndi/rmi://%s:%d/jmxrmi", p.getProperty("host"),Integer.parseInt(p.getProperty("port")));
+
         JMXServiceURL url =
-            new JMXServiceURL("service:jmx:rmi:///jndi/rmi://:1099/jmxrmi");
+            new JMXServiceURL(serviceurl);
         JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
 
         MBeanServerConnection mbsc = jmxc.getMBeanServerConnection();
