@@ -5,7 +5,7 @@ Input JMX statistics to Bosun/opentsdb.  Based roughly on code found in the jmx_
 
 Requirements to Run
 ------------
-- A bosun/opentsdb server.  Docker version [here](http://registry.hub.docker.com/u/stackexchange/bosun)
+- A [bosun](http://bosun.org) or [opentsdb](http://opentsdb.net) server.  Docker version [here](http://registry.hub.docker.com/u/stackexchange/bosun)
 - [scollector](http://github.com/bosun-monitor/scollector)
 
 Requirements to compile
