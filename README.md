@@ -15,6 +15,8 @@ Requirements to compile
 
 Installation + Usage
 ------------
+bosun-jmx.jar accepts a single argument which is a path to a properties file.  The three variables available are host, port and app-under-test. host and port are related to where the JMX debug port is located.  app-under-test is a string field you can use to differentiate a particular java process in the output (produces a tagk/v of 'appname' in the collector output.)  If you use a properties file, you will need to specify it as an argument to the bosun-jmx.jar file.  In the case of scollector, you will want to instead locate bosun-jmx.jar outside of the external collectors directory tree and instead use a shell script that calls the java with the properties file argument.
+
 - clone repo
 - execute `ant` from repo directory
 - make bosun-jmx.jar executable
