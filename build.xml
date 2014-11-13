@@ -1,0 +1,28 @@
+<project name="bosun-jmx" default="makejar" basedir=".">
+<target name="init">
+  <property name="sourceDir" value="src" />
+  <property name="outputDir" value="classes" />
+  <property name="JarName" value="bosun-jmx.jar" />
+</target>
+
+<target name="clean" depends="init">
+  <deltree dir="${outputDir}" />
+</target>
+
+<target name="prepare" depends="clean">
+  <mkdir dir="${outputDir}" />
+</target>
+
+<target name="compile" depends="prepare">
+ <javac srcdir="${sourceDir}" destdir="${outputDir}" />
+</target>
+
+<target name="makejar" depends="compile,init">
+  <jar destfile="${JarName}" basedir="${outputDir}">
+    <manifest>
+      <attribute name="Main-Class" value="me.vsix.JMXGet"/>
+    </manifest>
+  </jar>
+</target>
+
+</project>
