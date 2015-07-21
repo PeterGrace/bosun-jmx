@@ -13,6 +13,7 @@ public class JMXProgram {
         bjmx.getHeapMemoryUsage();
         bjmx.getNonHeapMemoryUsage();
         bjmx.getPoolMemoryUsage();
+        bjmx.getGcStats();
         sleep(1000);
     }
 
